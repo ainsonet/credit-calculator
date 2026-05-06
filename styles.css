@@ -1,0 +1,287 @@
+h1 {
+    font-size: 48px;
+    text-align: center;
+}
+
+p {
+	margin-top: -10px;
+	margin-left: 25px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.content, .calculator, .banks-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+ol {
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: white;
+    border-radius: 10px;
+    font-size: 24px;
+    padding: 12px 30px;
+    cursor: pointer;
+    margin: 10px;
+    border: 2px solid #333;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.calc-box {
+    display: flex;
+    gap: 12px;
+    max-width: 780px;
+    margin: 0 auto;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 20px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.left-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.field {
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.label {
+    color: gray;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.field input {
+    border: none;
+    outline: none;
+    font-size: 20px;
+    width: 100%;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.right-side {
+    flex: 1.1;
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.result-title {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.result-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.result-label {
+    color: gray;
+}
+
+.result-value {
+    font-weight: bold;
+}
+
+.button-row {
+    max-width: 780px;
+    margin: 14px auto;
+    box-sizing: border-box;
+}
+
+.button-row button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    margin: 0;
+    display: block;
+}
+
+.banks-box {
+    max-width: 780px;
+    margin: 0 auto;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 20px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.bank-item {
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.bank-item:last-child {
+    margin-bottom: 0;
+}
+
+.bank-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bank-top img {
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.bank-name {
+    font-size: 20px;
+    color: #000;
+    font-weight: normal;
+}
+
+.bank-params {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.param {
+    text-align: left;
+}
+
+.param-label {
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.param-value {
+    font-size: 16px;
+    color: #000;
+    font-weight: normal;
+}
+
+.menu-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+	margin-bottom: 10px;
+    width: 100%;
+}
+
+.menu-toggle-checkbox {
+    display: none;
+}
+
+.menu-title {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.menu-title h1 {
+    margin: 0;
+    font-size: 48px;
+    display: inline-block;
+}
+
+.arrow {
+    font-size: 24px;
+    margin-left: 8px;
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.menu-toggle-checkbox:checked + .menu-title .arrow {
+    transform: rotate(180deg);
+}
+
+.menu-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 100;
+    min-width: 250px;
+}
+
+.menu-toggle-checkbox:checked ~ .menu-list {
+    display: block;
+}
+
+.menu-list li {
+    margin: 0;
+    padding: 8px 16px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-list li:last-child {
+    border-bottom: none;
+}
+
+.menu-list a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.menu-list a:hover {
+    color: #555;
+}

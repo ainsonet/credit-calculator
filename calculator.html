@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles.css"/>
+	<title>Кредитный калькулятор</title>
+</head>
+<body>
+    <div class="menu-container">
+		<input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+			<label for="menu-toggle" class="menu-title">
+				<h1>Кредитный калькулятор</h1>
+			</label>
+					<ul class="menu-list">
+					<li><a href="index.html">Информация о сайте</a></li>
+					<li><a href="calculator.html">Кредитный калькулятор</a></li>
+					<li><a href="banks.html">Лучшие предложения банков</a></li>
+					<li><a href="#" onclick="saveCalculation()"><b>Сохранить расчёт</b></a></li>
+					<li><a href="#" onclick="clearHistory()"><b>Очистить историю расчётов</b></a></li>
+					<li><a href="#" onclick="downloadHistory()"><b>Скачать историю расчётов</b></a></li>
+				</ul>
+	</div>
+	<div class="calc-box">
+		<div class="left-side">
+			<div class="field">
+				<div class="label">Сумма кредита</div>
+				<input type="text" id="amount" value="300 000" autocomplete="off"/>
+				<div class="error" id="amount-error"></div>
+			</div>
+
+			<div class="field">
+				<div class="label">Ставка</div>
+				<input type="text" id="rate" value="17" autocomplete="off"/>
+				<div class="error" id="rate-error"></div>
+			</div>
+
+			<div class="field">
+				<div class="label">Срок кредита</div>
+				<input type="text" id="term" value="5" autocomplete="off"/>
+				<div class="error" id="term-error"></div>
+			</div>
+		</div>
+
+		<div class="right-side">
+			<div class="result-title">Результаты расчёта</div>
+			<div class="result-line">
+				<span class="result-label">Ежемесячный платеж</span>
+				<span class="result-value" id="monthly-payment">—</span>
+			</div>
+			<div class="result-line">
+				<span class="result-label">Сумма кредита</span>
+				<span class="result-value" id="loan-amount">—</span>
+			</div>
+			<div class="result-line">
+				<span class="result-label">Переплата</span>
+				<span class="result-value" id="overpayment">—</span>
+			</div>
+			<div class="result-line">
+				<span class="result-label">Общая сумма займа</span>
+				<span class="result-value" id="total-amount">—</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="button-row">
+		<button><a href="banks.html">Посмотреть лучшие предложения банков</a></button>
+	</div>
+
+	<script src="script.js"></script>
+	<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+*.xlsx
+*.xls
+*.docx
+*.pptx
+.DS_Store
+Thumbs.db
