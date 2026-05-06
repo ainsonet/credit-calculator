@@ -153,36 +153,53 @@ function saveCalculation() {
 
 function downloadHistory() {
     const history = JSON.parse(localStorage.getItem('calcHistory') || '[]');
-    const headers = ['Дата', 'Сумма кредита', 'Ставка', 'Срок', 'Ежемесячный платёж', 'Переплата', 'Общая сумма займа'];
+   
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    xml += '<?mso-application progid="Excel.Sheet"?>';
+    xml += '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"';
+    xml += ' xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">';
+    xml += '<Styles>';
+    xml += '<Style ss:ID="Header"><Font ss:Bold="1"/></Style>';
+    xml += '</Styles>';
+    xml += '<Worksheet ss:Name="История расчётов">';
+    xml += '<Table>';
 
-    const data = [headers];
-    history.forEach(item => {
-        data.push([
-            item.date,
-            item.amount,
-            item.rate,
-            item.term,
-            item.monthlyPayment,
-            item.overpayment,
-            item.totalAmount
-        ]);
+    xml += '<Row ss:StyleID="Header">';
+    xml += '<Cell><Data ss:Type="String">Дата</Data></Cell>';
+    xml += '<Cell><Data ss:Type="String">Сумма кредита</Data></Cell>';
+    xml += '<Cell><Data ss:Type="String">Ставка</Data></Cell>';
+    xml += '<Cell><Data ss:Type="String">Срок</Data></Cell>';
+    xml += '<Cell><Data ss:Type="String">Ежемесячный платёж</Data></Cell>';
+    xml += '<Cell><Data ss:Type="String">Переплата</Data></Cell>';
+    xml += '<Cell><Data ss:Type="String">Общая сумма займа</Data></Cell>';
+    xml += '</Row>';
+
+    history.forEach(function(item) {
+        xml += '<Row>';
+        xml += '<Cell><Data ss:Type="String">' + item.date + '</Data></Cell>';
+        xml += '<Cell><Data ss:Type="String">' + item.amount + '</Data></Cell>';
+        xml += '<Cell><Data ss:Type="String">' + item.rate + '</Data></Cell>';
+        xml += '<Cell><Data ss:Type="String">' + item.term + '</Data></Cell>';
+        xml += '<Cell><Data ss:Type="String">' + item.monthlyPayment + '</Data></Cell>';
+        xml += '<Cell><Data ss:Type="String">' + item.overpayment + '</Data></Cell>';
+        xml += '<Cell><Data ss:Type="String">' + item.totalAmount + '</Data></Cell>';
+        xml += '</Row>';
     });
 
-    const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.aoa_to_sheet(data);
+    xml += '</Table>';
+    xml += '<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">';
+    xml += '<PageSetup><Header x:Margin="0"/><Footer x:Margin="0"/></PageSetup>';
+    xml += '</WorksheetOptions>';
+    xml += '</Worksheet>';
+    xml += '</Workbook>';
 
-    ws['!cols'] = [
-        {wch: 20},
-        {wch: 22},
-        {wch: 10},
-        {wch: 10},
-        {wch: 22},
-        {wch: 20},
-        {wch: 22}
-    ];
-
-    XLSX.utils.book_append_sheet(wb, ws, 'История расчётов');
-    XLSX.writeFile(wb, 'История Расчётов.xlsx');
+    const blob = new Blob([xml], {type: 'application/vnd.ms-excel;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'История Расчётов.xls';
+    a.click();
+    URL.revokeObjectURL(url);
 }
 
 function clearHistory() {
